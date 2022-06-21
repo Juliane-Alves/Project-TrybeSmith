@@ -6,6 +6,13 @@ const getAllProducts = async () => {
   return allProducts;
 };
 
+const createProducts = async (name: string, amount: string) => {
+  const newProducts = await products.createProducts(name, amount);
+
+  return newProducts;
+};
+
 export default {
   getAllProducts,
+  createProducts,
 };

@@ -12,6 +12,17 @@ const getAllProducts = async (_req: Request, res: Response, next: NextFunction) 
   }
 };
 
+const createProducts = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { name, amount } = req.body;  
+    const product = await productsService.createProducts(name, amount);
+    return res.status(201).json(product);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export default {
   getAllProducts,
+  createProducts,
 }; 

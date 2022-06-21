@@ -9,6 +9,24 @@ const getAllProducts = async () => {
   return productsList as IProducts[];
 };
 
+const createProducts = async (name: string, amount: string) => {
+  const query = `
+  INSERT INTO Trybesmith.Products (name, amount)
+  VALUES (?, ?)`;
+
+  const [result] = await connection.execute(query, [name, amount]);
+
+  const { insertId } = JSON.parse(JSON.stringify(result)); // usando o parse e stringify como dica do readme
+
+  const newProduct = {
+    id: insertId,
+    name,
+    amount,
+  };
+  return newProduct as IProducts;
+};
+
 export default {
   getAllProducts,
+  createProducts,
 };
