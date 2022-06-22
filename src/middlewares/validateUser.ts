@@ -35,14 +35,14 @@ const validateClasse = (req: Request, res: Response, next: NextFunction) => {
 const validateLevel = (req: Request, res: Response, next: NextFunction) => {
   const { level } = req.body;
   const MIN_LEVEL = 1;
+  if (level < MIN_LEVEL) {
+    next({ status: 422, message: '"level" must be greater than or equal to 1' });
+  }
   if (!level) {
     next({ status: 400, message: '"level" is required' });
   }
   if (typeof level !== 'number') {
     next({ status: 422, message: '"level" must be a number' });
-  }
-  if (level < MIN_LEVEL) {
-    next({ status: 422, message: '"level" must be greater than or equal to 1' });
   }
   next();
 };
