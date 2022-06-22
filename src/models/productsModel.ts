@@ -26,7 +26,16 @@ const createProducts = async (name: string, amount: string) => {
   return newProduct as IProducts;
 };
 
+const productsForOrders = async (orderId: number) => {
+  const query = 'SELECT * FROM Trybesmith.Products WHERE orderId = ?';
+
+  const [data] = await connection.execute(query, [orderId]);
+
+  return data as IProducts[];
+};
+
 export default {
   getAllProducts,
   createProducts,
+  productsForOrders,
 };

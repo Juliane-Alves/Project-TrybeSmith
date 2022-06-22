@@ -1,14 +1,15 @@
-/* import { Request, Response, NextFunction } from 'express';
-
+import { Request, Response, NextFunction } from 'express';
 import ordersService from '../Services/ordersService';
 
-const getOrder = async (_req: Request, res: Response, next: NextFunction) => {
+const getOrders = async (_req: Request, res: Response, next: NextFunction) => {
   try {
-    const { status, data } = await ordersService.getOrder();
-    return res.status(status).json(data);
+    const data = await ordersService.getOrders();
+    return res.status(200).json(data);
   } catch (error) {
     next(error);
   }
 };
 
-export default getOrder; */
+export default {
+  getOrders,
+};

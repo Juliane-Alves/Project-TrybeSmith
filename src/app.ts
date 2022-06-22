@@ -5,6 +5,7 @@ import validateName from './middlewares/validateName';
 import amountValidate from './middlewares/amountValidate';
 import validateUser from './middlewares/validateUser';
 import userController from './controllers/userController';
+import ordersController from './controllers/ordersController';
 
 const app = express();
 
@@ -29,7 +30,7 @@ app.post(
 
 );
 
-app.get('/orders');
+app.get('/orders', ordersController.getOrders);
 
 app.use(middlewareError);
 
