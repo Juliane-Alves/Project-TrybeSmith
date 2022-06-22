@@ -29,6 +29,8 @@ app.post(
 
 );
 
+app.get('/orders');
+
 app.use(middlewareError);
 
 export default app;

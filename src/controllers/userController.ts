@@ -8,7 +8,7 @@ const createUser = async (req: Request, res: Response, next: NextFunction) => {
 
     const tokenUser = await userService.createUser(username, classe, level, password);
 
-    return res.status(201).json(tokenUser);
+    return res.status(201).json({ token: tokenUser });
   } catch (error) {
     next(error);
   }

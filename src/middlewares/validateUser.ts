@@ -41,7 +41,7 @@ const validateLevel = (req: Request, res: Response, next: NextFunction) => {
   if (typeof level !== 'number') {
     next({ status: 422, message: '"level" must be a number' });
   }
-  if (level.length > MIN_LEVEL) {
+  if (level < MIN_LEVEL) {
     next({ status: 422, message: '"level" must be greater than or equal to 1' });
   }
   next();
